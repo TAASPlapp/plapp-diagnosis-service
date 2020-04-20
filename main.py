@@ -3,6 +3,7 @@ import torchvision
 import numpy as np
 import PIL
 import requests
+import wget
 from io import BytesIO
 
 from flask import Flask, request, jsonify
@@ -18,6 +19,7 @@ transforms = torchvision.transforms.Compose([
 ])
 
 model = PlantDiseaseClassifier(pretrained=False)
+wget.download('https://github.com/TAASPlapp/plapp-diagnosis-service/releases/download/v1.0/resnet18-plantvillage-42.pt')
 checkpoint = torch.load('resnet18-plantvillage-42.pt', map_location={'cuda:0': 'cpu'})
 model.load_state_dict(checkpoint['model'])
 
