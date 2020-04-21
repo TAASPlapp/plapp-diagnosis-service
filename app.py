@@ -54,7 +54,7 @@ classes = list(map(lambda c: c.replace('_', ' ').replace('   ', ' - '), classes)
 
 @app.route('/diagnose')
 def diagnose():
-    url = request.args['url']
+    url = request.args['plantImageURL']
     response = requests.get(url)
     print(response)
     image = PIL.Image.open(BytesIO(response.content))
