@@ -63,11 +63,12 @@ def diagnose():
         _, pred = torch.max(model(x), 1)
     pred = pred.squeeze(0).item()
 
-    return {
+    response = {
         'plantId': 0,
         'ill': False if 'healthy' in classes[pred] else True,
         'disease': classes[pred]
     }
+    return jsonify(response)
 
 if __name__ == '__main__':
     app.run()
