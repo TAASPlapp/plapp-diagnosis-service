@@ -66,6 +66,7 @@ def diagnose():
     response = {
         'plantId': 0,
         'ill': False if 'healthy' in classes[pred] else True,
+        'status': 'HEALTHY' if 'healthy' in classes[pred] else 'SICK',
         'disease': classes[pred]
     }
     return jsonify(response)
